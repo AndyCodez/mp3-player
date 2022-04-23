@@ -53,7 +53,7 @@ export default {
     }
   },
   created() {
-    axios.get('./data.json')
+    axios.get('https://orangevalleycaa.org/api/music')
     .then(response => this.songs = response.data)
     .catch(err => console.log(err));
   }
