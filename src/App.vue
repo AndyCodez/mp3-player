@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <current-song :song="currentSong" v-if="currentSong"/>
-    <song-list :songs="songs" @handlePlay="handlePlay" @handleDelete="handleDelete" />
+    <song-list :songs="songs" :currentSong="currentSong" @handlePlay="handlePlay" @handleDelete="handleDelete" />
   </div>
 </template>
 

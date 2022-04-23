@@ -1,6 +1,8 @@
 <template>
     <div class="songlist list-group">
-        <div class="song list-group-item list-group-item-action d-flex" v-for="(song, index) in songs" :key="index">
+        <div class="song list-group-item list-group-item-action d-flex" 
+            :class="{active: currentSong !== null && currentSong == song}"
+            v-for="(song, index) in songs" :key="index">
             <font-awesome-icon class="trash mr-3 align-self-center" icon="trash" @click="$emit('handleDelete', song)" />
             <div class="thumbnail" :style="{backgroundImage: 'url('+song.thumb+')'}">
             </div>
@@ -22,7 +24,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
     name: "song-list",
-    props: ["songs"],
+    props: ["songs", "currentSong"],
     components: {
         FontAwesomeIcon
     }
