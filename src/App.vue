@@ -9,7 +9,7 @@
 import CurrentSong from "./components/CurrentSong";
 import SongList from "./components/SongList";
 import _ from "lodash";
-
+import axios from "axios";
 
 export default {
   name: 'App',
@@ -53,12 +53,9 @@ export default {
     }
   },
   created() {
-    fetch('./data.json')
-    .then(respose => respose.json())
-    .then(data => {
-      this.songs = data;
-    })
-    .catch(err => console.log(err))
+    axios.get('./data.json')
+    .then(response => this.songs = response.data)
+    .catch(err => console.log(err));
   }
 }
 </script>
