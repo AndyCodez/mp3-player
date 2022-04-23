@@ -19,6 +19,7 @@ export default {
   data(){
     return {
       currentSong: null,
+      audioElement: null,
       songs: [
         {
           "id": "1",
@@ -135,7 +136,27 @@ export default {
   },
   methods: {
     handlePlay: function(song) {
-      return this.currentSong = song;
+      if (this.audioElement == null) {
+        this.audioElement = new Audio(song.music_url);
+        this.audioElement.play();
+      } else {
+        if (this.currentSong == song) {
+          if (this.audioElement.paused) {
+            this.audioElement.play();
+          } else {
+            this.audioElement.pause();
+          }
+        } else {
+          this.audioElement.src = song.music_url;
+          this.audioElement.play();
+        }
+      }
+      this.currentSong = song;
+
+      this.audioElement.addEventListener('ended', () => {
+        this.currentSong = null;
+        this.audioElement.null;
+      })
     }
   }
 }
