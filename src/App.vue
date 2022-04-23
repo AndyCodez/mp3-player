@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <current-song :song="currentSong" v-if="currentSong"/>
-    <song-list :songs="songs" @handlePlay="handlePlay" />
+    <song-list :songs="songs" @handlePlay="handlePlay" @handleDelete="handleDelete" />
   </div>
 </template>
 
 <script>
 import CurrentSong from "./components/CurrentSong";
 import SongList from "./components/SongList";
+import _ from "lodash";
 
 
 export default {
@@ -157,6 +158,9 @@ export default {
         this.currentSong = null;
         this.audioElement.null;
       })
+    },
+    handleDelete: function(song) {
+      this.songs = _.without(this.songs, song);
     }
   }
 }
