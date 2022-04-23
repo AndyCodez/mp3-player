@@ -1,17 +1,27 @@
 <template>
-  <div id="app" class="container">
-    <h1 class="text-primary mt-3">Music App</h1>
-    <p> <font-awesome-icon icon="trash"/> Lorem ipsum dolor sit amet, consectetur adipisicing elit. . Inventore, odio.</p>
+  <div id="app">
+    <current-song :song="currentSong" />
   </div>
 </template>
 
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import CurrentSong from "./components/CurrentSong";
+
 
 export default {
   name: 'App',
   components: {
-    FontAwesomeIcon
+    // FontAwesomeIcon,
+    CurrentSong
+  },
+  data(){
+    return {
+      currentSong: {
+        name: "Disco Dash",
+        description: "This song was written by Jeff Anonymous in 1995."
+      }
+    }
   }
 }
 </script>
