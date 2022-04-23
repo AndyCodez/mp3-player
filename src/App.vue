@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <current-song :song="currentSong" v-if="currentSong"/>
-    <song-list :songs="songs" />
+    <song-list :songs="songs" @handlePlay="handlePlay" />
   </div>
 </template>
 
@@ -133,8 +133,10 @@ export default {
       ]
     }
   },
-  mounted() {
-    console.log(this.songs);
+  methods: {
+    handlePlay: function(song) {
+      return this.currentSong = song;
+    }
   }
 }
 </script>
@@ -188,7 +190,7 @@ $list-group-action-color: #bbb;
 }
 
 .currentsong .song-info {
-  background-color: #000;
+  position: inherit;
 }
 
 .currentsong .song-name {

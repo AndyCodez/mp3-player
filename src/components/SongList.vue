@@ -9,9 +9,9 @@
                 <small class="duration">{{song.duration}}</small></h4>
             <p class="song-info-creator mb-0">{{song.created_by}}</p>
             </div>
-            <div class="now-playing d-flex align-items-center">
-            <font-awesome-icon class="play" icon="play" />
-            <font-awesome-icon class="pause" icon="pause" />
+            <div class="now-playing d-flex align-items-center" @click="$emit('handlePlay',song)">
+                <font-awesome-icon class="play" icon="play" />
+                <font-awesome-icon class="pause" icon="pause" />
             </div>
         </div>
     </div>
